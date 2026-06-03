@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Backend / frontend build output
+dist/
+out-tsc/
+bazel-out/
+
+# Angular cache
+.angular/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+coverage/
+__screenshots__/
