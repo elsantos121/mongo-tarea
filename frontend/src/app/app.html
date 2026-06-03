@@ -1,0 +1,46 @@
+<main class="container mt-5">
+  <div class="row mb-4">
+    <div class="col text-center">
+      <h1 class="display-5 fw-bold text-primary">{{ title }}</h1>
+      <p class="lead text-muted">
+        Los siguientes datos fueron calculados y filtrados en tiempo real por el <strong>Aggregation Framework</strong> de MongoDB.
+      </p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+          <table class="table table-hover table-striped mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col" class="ps-4 py-3">Categoría</th>
+                <th scope="col" class="text-center py-3">Total Recaudado</th>
+                <th scope="col" class="text-center py-3">Unidades Vendidas</th>
+                <th scope="col" class="text-center py-3">Venta Promedio</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of reporteVentas(); track item._id) {
+                <tr class="align-middle">
+                  <td class="ps-4 fw-semibold text-secondary">{{ item._id }}</td>
+                  <td class="text-center text-success fw-bold fs-5">${{ item.totalRecaudado }}</td>
+                  <td class="text-center"><span class="badge bg-primary rounded-pill fs-6 px-3">{{ item.cantidadItems }}</span></td>
+                  <td class="text-center text-warning fw-bold fs-6">${{ item.ventaPromedio }}</td>
+                </tr>
+              } @empty {
+                <tr>
+                  <td colspan="4" class="text-center text-muted py-5">
+                    <div class="spinner-border text-primary me-2" role="status" style="width: 1.5rem; height: 1.5rem;"></div>
+                    <span>Consultando al motor de base de datos...</span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
